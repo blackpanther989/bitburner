@@ -12,6 +12,6 @@ export async function main(ns) {
   }
 
   ns.print(`Starting operation: hack on ${target} in ${threads} threads`)
-  ns.tprint(ns.nFormat(await ns.hack(target, { threads, stock: true }), "$0.000a")  +" Stolen")  
+  ns.tprint(ns.getHostname() + " Stole: "+ ns.nFormat(await ns.hack(target, { threads, stock: true }), "$0.000a")  +" from "+ target)  
   ns.exit()
 }
