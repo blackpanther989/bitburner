@@ -48,6 +48,7 @@ export async function main(ns) {
     ns.tprint(`[${localeHHMMSS()}] Spawning spider.ns`)
     ns.spawn('spider.ns', 1, 'killAll.ns')
     ns.exit()
+
     return
   }
 

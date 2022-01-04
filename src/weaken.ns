@@ -2,8 +2,11 @@ export async function main(ns) {
   const target = ns.args[0]
   const threads = ns.args[1]
   const delay = ns.args[2]
+  
+  ns.disableLog(sleep)
 
   if (delay && delay > 0) {
+    ns.print("Sleeping for " + ns.tFormat(delay))
     await ns.sleep(delay)
   }
 
