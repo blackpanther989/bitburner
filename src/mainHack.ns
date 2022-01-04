@@ -213,9 +213,9 @@ export async function main(ns) {
     )
     ns.tprint(
       `[${localeHHMMSS()}] Stock values: baseSecurity: ${serverMap.servers[bestTarget].baseSecurityLevel}; minSecurity: ${serverMap.servers[bestTarget].minSecurityLevel
-      }; maxMoney: ${ns.nFormat(serverMap.servers[server].maxMoney, '$0,0')}`
+      }; maxMoney: ${ns.nFormat(serverMap.servers[bestTarget].maxMoney, '$0,0')}`
     )
-    ns.tprint(`[${localeHHMMSS()}] Current values: security: ${Math.floor(securityLevel * 1000) / 1000}; money: ${ns.nFormat(serverMap.servers[server].money, '$0,0.00')}`)
+    ns.tprint(`[${localeHHMMSS()}] Current values: security: ${Math.floor(securityLevel * 1000) / 1000}; money: ${ns.nFormat(serverMap.servers[bestTarget].money, '$0,0.00')}`)
     ns.tprint(
       `[${localeHHMMSS()}] Time to: hack: ${convertMSToHHMMSS(hackTime)}; grow: ${convertMSToHHMMSS(growTime)}; weaken: ${convertMSToHHMMSS(weakenTime)}`
     )
