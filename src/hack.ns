@@ -3,6 +3,7 @@ export async function main(ns) {
   const threads = ns.args[1]
   const delay = ns.args[2]
 
+  ns.disableLog("disableLog")
   ns.disableLog("sleep")
 
   if (delay && delay > 0) {
