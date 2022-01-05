@@ -210,8 +210,8 @@ export async function main(ns) {
       growCycles += Math.floor(server.ram / 1.75)
     }
     weakenCycles = growCycles
-    number stolen = getItem(settings.key.stolenMoney);
-    ns.tprint(`[${localeHHMMSS()}] Last Hack cycle Stole: ${ns.nFormat(,'$0,0')}`)
+    let stolen = getItem(settings.key.stolenMoney);
+    ns.tprint(`[${localeHHMMSS()}] Last Hack cycle Stole: ${ns.nFormat(stolen,'$0,0')}`)
     setItem(settings.keys.stolenMoney,0.000)
     ns.tprint(
       `[${localeHHMMSS()}] Selected ${bestTarget} for a target. Planning to ${action} the server. Will wake up around ${localeHHMMSS(
