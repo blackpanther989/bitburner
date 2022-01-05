@@ -31,12 +31,11 @@ export async function main(ns) {
   ns.print(`Starting operation: hack on ${target} in ${threads} threads`)
   var stolen = await ns.hack(target, { threads, stock: true });
   if (stolen != 0) {
-    var value = getItem(settings.keys.stolenMoney)
-     if ( value == null || undefined)
-      { setItem(settiings.keys.stolenMoney, stolen)}
-      else
-      { setItem(Settings.keys.stolenMooney, value+stolen)}
-    ns.tprint(ns.getHostname() + " Stole: "+ ns.nFormat(stolen, "$0.000a")  +" from "+ target)  
+    var arr = getItem(settings.keys.stolenMoney);
+    arr.push(stolen);
+    setItem(settings.keys.stolenMoney,arr)
+    ns.tprint(ns.getHostname() + " Stole: "+ ns.nFormat(stolen, "$0.000a")  +" from "+ target)
   }
+
   ns.exit()
 }

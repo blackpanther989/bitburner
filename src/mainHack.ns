@@ -157,11 +157,12 @@ export async function main(ns) {
   ns.tprint(`[${localeHHMMSS()}] Starting mainHack.ns`)
 
   let hostname = ns.getHostname()
-  setItem(settings.keys.stolenMoney,0.000);
+ 
   if (hostname !== 'home') {
     throw new Exception('Run the script from home')
   }
-
+  const stolenZero = 0
+  setItem(settings.keys.stolenMoney,stolenZero)
   while (true) {
     const serverExtraData = {}
     const serverMap = getItem(settings.keys.serverMap)
@@ -210,9 +211,11 @@ export async function main(ns) {
       growCycles += Math.floor(server.ram / 1.75)
     }
     weakenCycles = growCycles
-    let stolen = getItem(settings.key.stolenMoney);
-    ns.tprint(`[${localeHHMMSS()}] Last Hack cycle Stole: ${ns.nFormat(stolen,'$0,0')}`)
-    setItem(settings.keys.stolenMoney,0.000)
+    let stolenTotal =0
+    const allstolenTotal = getItem(settings.keys.stolenMoney)
+    allstolenTotal.forEach((v) => { stolenTotal += v })
+    ns.tprint(`[${localeHHMMSS()}] Last Hack cycle Stole: ${ns.nFormat(stolenTotal,'$0,0')}`)
+    setItem(settings.keys.stolenMoney,stolenZero)
     ns.tprint(
       `[${localeHHMMSS()}] Selected ${bestTarget} for a target. Planning to ${action} the server. Will wake up around ${localeHHMMSS(
         new Date().getTime() + weakenTime + 300
