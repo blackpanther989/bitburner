@@ -22,6 +22,7 @@ const filesToDownload = [
   'sellAllStock.ns',
   'stockMarketer.ns',
   'stockMarketer4S.ns',
+  'nodes-ooat.ns',
 ]
 const valuesToRemove = ['BB_SERVER_MAP']
 
@@ -32,20 +33,18 @@ function localeHHMMSS(ms = 0) {
 
   return new Date(ms).toLocaleTimeString()
 }
-
+/** @param {import(".").NS } ns */
 export async function main(ns) {
-  ns.tprint(`[${localeHHMMSS()}] Starting initHacking.ns`)
-
+  ns.tprint(`[${localeHHMMSS()}] Starting initHacking.ns`)  
   let hostname = ns.getHostname()
-
+ 
   if (hostname !== 'home') {
     throw new Exception('Run the script from home')
-  }
-
+  }  
   for (let i = 0; i < filesToDownload.length; i++) {
     const filename = filesToDownload[i]
     const path = baseUrl + filename
-    await ns.scriptKill(filename, 'home')
+    await ns.scriptKill(filename, 'home')    
     await ns.rm(filename)
     await ns.sleep(200)
     ns.tprint(`[${localeHHMMSS()}] Trying to download ${path}`)
