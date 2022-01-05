@@ -15,6 +15,7 @@ function setItem(key, value) {
   localStorage.setItem(key, JSON.stringify(value))
 }
 
+/** @param {import(".").NS } ns */
 export async function main(ns) {
   ns.disableLog('ALL')
   const equpiments = ns.gang.getEquipmentNames().map((equipmentName) => {

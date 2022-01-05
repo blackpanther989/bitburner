@@ -1,3 +1,4 @@
+/** @param {import(".").NS } ns */
 export async function main(ns) {
   const target = ns.args[0]
   const threads = ns.args[1]
@@ -12,6 +13,8 @@ export async function main(ns) {
   }
 
   ns.print(`Starting operation: hack on ${target} in ${threads} threads`)
-  ns.tprint(ns.getHostname() + " Stole: "+ ns.nFormat(await ns.hack(target, { threads, stock: true }), "$0.000a")  +" from "+ target)  
+  var stolen = await ns.hack(target, { threads, stock: true });
+  if (stolen != 0)
+    ns.tprint(ns.getHostname() + " Stole: "+ ns.nFormat(stolen, "$0.000a")  +" from "+ target)  
   ns.exit()
 }

@@ -53,6 +53,7 @@ function selectCrime(crimes) {
   return bestCrime
 }
 
+/** @param {import(".").NS } ns */
 export async function main(ns) {
   ns.tprint(`[${localeHHMMSS()}] Starting commitCrime.ns`)
 
@@ -83,7 +84,7 @@ export async function main(ns) {
         await ns.sleep(100)
       }
 
-      ns.tprint(`[${localeHHMMSS()}] Commiting crime: ${crimeToCommit}`)
+      ns.tprint(`[${localeHHMMSS()}] Commiting crime: ${crimeToCommit}`)      
       ns.commitCrime(crimeToCommit)
       await ns.sleep(crimes[crimeToCommit].stats.time + 5)
     }

@@ -1,0 +1,66 @@
+/** @type import(".").NS */
+let ns = null;
+
+function myMoney() {
+    return getServerMoneyAvailable("home");
+}
+
+disableLog("disableLog");
+disableLog("getServerMoneyAvailable");
+disableLog("sleep");
+
+var cnt = 35;
+var maxLevel = 199;
+var maxCpus = 16;
+var maxRam = 64;
+var levelStep = 10;
+var ramStep = 2;
+var cpuStep = 1;
+
+while (hacknet.numNodes() < cnt) {        
+    res = hacknet.purchaseNode();    
+    if (res != -1 ) {
+    print("Purchased hacknet Node with index " + res);
+
+    while (hacknet.getNodeStats(res).level <= maxLevel) {
+        var cost = hacknet.getLevelUpgradeCost(res, levelStep);
+        var printed = false;
+        while (myMoney() < cost) {
+            if (!printed) {
+                print("Need $" + cost + " . Have $" + myMoney());
+                printed = true;
+            }
+            sleep(100);
+        }
+        hacknet.upgradeLevel(res, levelStep);
+    };
+
+    while (hacknet.getNodeStats(res).ram < maxRam) {
+        var cost = hacknet.getRamUpgradeCost(res, ramStep);
+        var printed = false;
+        while (myMoney() < cost) {
+            if (!printed) {
+                print("Need $" + cost + " . Have $" + myMoney());
+                printed = true;
+            }
+            sleep(1000);
+        }
+        hacknet.upgradeRam(res, ramStep);
+    };
+
+        while (hacknet.getNodeStats(res).cores < maxCpus) {
+        var cost = hacknet.getCoreUpgradeCost(res, cpuStep);
+        var printed = false;
+        while (myMoney() < cost) {
+            if (!printed) {
+
+                print("Need $" + cost + " . Have $" + myMoney());
+                printed = true;
+            }
+            sleep(1000);
+        }
+
+        hacknet.upgradeCore(res, cpuStep);
+    };
+    }
+};

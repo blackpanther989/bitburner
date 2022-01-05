@@ -401,6 +401,7 @@ function findAnswer(contract) {
   return answer
 }
 
+/** @param {import(".").NS } ns */
 export async function main(ns) {
   ns.tprint(`[${localeHHMMSS()}] Starting contracter.ns`)
 

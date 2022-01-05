@@ -33,6 +33,7 @@ function localeHHMMSS(ms = 0) {
   return new Date(ms).toLocaleTimeString()
 }
 
+/** @param {import(".").NS } ns */
 export async function main(ns) {
   ns.tprint(`[${localeHHMMSS()}] Starting spider.ns`)
 

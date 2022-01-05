@@ -42,6 +42,8 @@ function printPathToServer(servers, serverToFind) {
   return jumps.reverse().join('; connect ')
 }
 
+/** @param {import(".").NS } ns */
+/** @param {import(".").NS } ns */
 export async function main(ns) {
   ns.tprint(`[${localeHHMMSS()}] Starting find.ns`)
 
