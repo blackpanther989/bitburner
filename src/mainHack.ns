@@ -157,7 +157,7 @@ export async function main(ns) {
   ns.tprint(`[${localeHHMMSS()}] Starting mainHack.ns`)
 
   let hostname = ns.getHostname()
-
+  setItem(settings.keys.stolenMoney,0);
   if (hostname !== 'home') {
     throw new Exception('Run the script from home')
   }
