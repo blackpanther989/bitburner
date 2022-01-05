@@ -13,6 +13,7 @@ const settings = {
   maxWeakenTime: 30 * 60 * 1000,
   keys: {
     serverMap: 'BB_SERVER_MAP',
+    stolenMoney: 'BB_STOLEN_AMMOUNT',
   },
   changes: {
     hack: 0.002,
@@ -210,6 +211,8 @@ export async function main(ns) {
     }
     weakenCycles = growCycles
 
+    ns.tprint(`[${localeHHMMSS()}] Last Hack cycle Stole: ${ns.nFormat(getItem(settings.key.stolenMoney),'$0,0')}`)
+    setItem(settings.key.stolenMoney,0);
     ns.tprint(
       `[${localeHHMMSS()}] Selected ${bestTarget} for a target. Planning to ${action} the server. Will wake up around ${localeHHMMSS(
         new Date().getTime() + weakenTime + 300
